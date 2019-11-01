@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Hexo 架設自己的 Blog - Aimee Lo | Blog
+          [ Vue ] Vue基礎架構 &amp; 雙向綁定v-model - Aimee Lo | Blog
         
     </title>
 
-    <link rel="canonical" href="http://a-min.art/article/build-blog/">
+    <link rel="canonical" href="http://a-min.art/article/019vue01/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,16 +88,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                              <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
                             
-                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                              <a class="tag" href="/tags/#Vue學習日記" title="Vue學習日記">Vue學習日記</a>
                             
                         </div>
-                        <h1>Hexo 架設自己的 Blog</h1>
-                        <h2 class="subheading">第一個自己建置的部落格</h2>
+                        <h1>[ Vue ] Vue基礎架構 &amp; 雙向綁定v-model</h1>
+                        <h2 class="subheading">Vue.js 菜鳥學習日記</h2>
                         <span class="meta">
                             Posted by Aimee on
-                            2019-10-28
+                            2019-11-01
                         </span>
                     </div>
                 
@@ -214,42 +214,48 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="Hexo-架設自己的-Blog"><a href="#Hexo-架設自己的-Blog" class="headerlink" title="Hexo 架設自己的 Blog"></a>Hexo 架設自己的 Blog</h1><p>在正式開始架設自己的Blog之前呢<br>首先環境設定必需要有<br><code>Node.js</code> ( 開啟terminal可以利用node -v查看版本或是否安裝<br><code>Git</code></p>
+                <p>菜鳥新手初學 Vue<br>在沒有導師得指導下，網路影片以及書籍是最好的學系來源了！<br>本次學習日記是參考表嚴肅 Vue.js 精講 01-20 集<br>影片連結也提供給大家，有興趣的人歡迎一起練習。</p>
+<blockquote>
+<p>表嚴肅<br>Vue.js 精講 01-20 集<br><a href="https://www.bilibili.com/video/av13450835/?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av13450835/?p=1</a></p>
+</blockquote>
 <hr>
-<h3 id="Step01-先下載-Hexo"><a href="#Step01-先下載-Hexo" class="headerlink" title="Step01 先下載 Hexo"></a>Step01 先下載 Hexo</h3><p>開始透過npm安裝Hexo，在terminal中輸入安裝指令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<h3 id="Vue-基礎框架"><a href="#Vue-基礎框架" class="headerlink" title="Vue 基礎框架"></a>Vue 基礎框架</h3><p>先進入 BootCDN 將 Vue 的 Js 檔案下載到本定端。<br><a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">https://www.bootcdn.cn/</a><br><img src="https://i.imgur.com/lW4X7nC.png" alt=" "></p>
+<p>我這學習日記使用的版本 Vue 版本 2.6.10<br>將這份JS下載到本地端 <a href="https://cdn.bootcss.com/vue/2.6.10/vue.js" target="_blank" rel="noopener">https://cdn.bootcss.com/vue/2.6.10/vue.js</a> </p>
+<p>並且建立 HTML 基礎框架，並將下載得檔案 require 近來。<br><img src="https://i.imgur.com/4lc977J.png" alt=" "></p>
+<blockquote>
+<p>注意！require Js 優先順序需要注意，否則會出現 Error。</p>
+</blockquote>
+<hr>
+<h3 id="el-element-綁定"><a href="#el-element-綁定" class="headerlink" title="el: element 綁定"></a>el: element 綁定</h3><p>在 require 的 main.js 新增</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,  <span class="comment">// element 元件綁定屬性 id = app</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>並且在 HTML 框架建立一個 id 屬性為 app</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是 &#123;&#123;typeof 1&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"..//lib/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>這時候打開網頁畫面會顯示 ‘ 你的名字是 number ’ 字樣</p>
+</blockquote>
+<p>出現兩個花括號時<br>Vue 會開始解析花括號內當成類似 JS 的內容<br>但並不是所有 JS 都可以解析。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#125;&#125; <span class="comment">&lt;!-- 兩個花括號，用來做資料顯示綁定 --&gt;</span></span><br></pre></td></tr></table></figure>
 
 <hr>
-<h3 id="Step02-建立資料夾-並且初始化"><a href="#Step02-建立資料夾-並且初始化" class="headerlink" title="Step02 建立資料夾 並且初始化"></a>Step02 建立資料夾 並且初始化</h3><p>第一個命令 aimee_blog 是自己的資料夾名稱，請由個人喜好自取喔！<br>再來請依照順序完成以下命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init aimee_blog</span><br><span class="line">$ cd aimee_blog</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<h3 id="data"><a href="#data" class="headerlink" title="data:{ }"></a>data:{ }</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是 &#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span>   <span class="comment">&lt;!-- 會去尋找 main.js 裡頭有沒有 name --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"..//lib/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>完成之後，專案開啟目錄可以看到以下結果：<br><img src="/img/md-img/001.png" alt=" "></p>
-<p>_config.yml： 網站 配置 檔案，可以在此配置大部分的設定。<br>package.json： 套件版本控制<br>scaffolds： 鷹架 資料夾。建立新文章時，會根據 scaffold 來建立檔案。<br>source： 原始檔案資料夾是放置內容的地方。<br>themes： 主題 資料夾。Hexo 會根據主題來產生靜態檔案。</p>
+<p>在 Vue 的所有數據，都必須放在一個叫 <code>data:{}</code> 的屬性裏頭<br>所以修改 main.js 內容，新增 <code>data:{}</code>，定且將 name 寫進來 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>, </span><br><span class="line">  data: &#123;</span><br><span class="line">    name: <span class="string">'A'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>網頁畫面就會顯示 ‘你的名字是 A’</p>
+</blockquote>
 <hr>
-<h3 id="Step03-本地端開啟blog網頁"><a href="#Step03-本地端開啟blog網頁" class="headerlink" title="Step03 本地端開啟blog網頁"></a>Step03 本地端開啟blog網頁</h3><p>並且啟用 hexo-sever</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server </span><br><span class="line">$ hexo s       # 簡化版寫法</span><br></pre></td></tr></table></figure>
-<p>如果有錯誤可以參考官方文件 <a href="https://hexo.io/zh-tw/docs/server.html" target="_blank" rel="noopener">https://hexo.io/zh-tw/docs/server.html</a><br>成功之後，網站開啟 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 就可以看到以下畫面</p>
-<p><img src="/img/md-img/002.png" alt=" "></p>
-<hr>
-<h3 id="Step04-Push到GitHub"><a href="#Step04-Push到GitHub" class="headerlink" title="Step04 Push到GitHub"></a>Step04 Push到GitHub</h3><p>先在 GitHub 建立新的 repository<br>repository name 這一段請使用自己 GitHub 默認網域<br>我的是 aimeeloo.github.io<br>如有自行購買網域，可以之後或是直接進行更改。</p>
-<p><img src="/img/md-img/003.png" alt=" "></p>
-<p>開啟 _config.yml 檔案，並且修改 #Deployment 的部分<br>改成這樣</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/Aimeeloo/aimeeloo.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="雙向綁定-v-model"><a href="#雙向綁定-v-model" class="headerlink" title="雙向綁定 v-model"></a>雙向綁定 v-model</h3><p><code>v-model</code> 是 Vue 框架提供的方法，用於 <code>雙向綁定</code></p>
+<p>一開始先將會使用到的數據一樣先寫入 JS 的 data</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>, </span><br><span class="line">  data: &#123;</span><br><span class="line">    name: <span class="string">'A'</span>,</span><br><span class="line">    age: <span class="string">'18'</span>,</span><br><span class="line">    sex: <span class="string">'F'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>當我們給他 <code>&lt;input&gt;</code> 時，尚未使用 v-model 屬性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是： &#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的年齡是： &#123;&#123;age&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的性別是： &#123;&#123;sex&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<hr>
-<h3 id="Step05-安裝Git"><a href="#Step05-安裝Git" class="headerlink" title="Step05 安裝Git"></a>Step05 安裝Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Step06-將網站佈署到伺服器"><a href="#Step06-將網站佈署到伺服器" class="headerlink" title="Step06 將網站佈署到伺服器"></a>Step06 將網站佈署到伺服器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy -g</span><br><span class="line"></span><br><span class="line">$ hexo d -g      # 簡化版，產生靜態檔後部署</span><br><span class="line">$ hexo s -g      # 產生靜態檔後預覽</span><br></pre></td></tr></table></figure>
-<p>hexo deploy (hexo d) 部署網站。<br>hexo generate (hexo g) 產生靜態檔案，會在目錄下產生 public 資料夾。</p>
-<hr>
-<h3 id="Step07-設定repository"><a href="#Step07-設定repository" class="headerlink" title="Step07 設定repository"></a>Step07 設定repository</h3><p>在 GitHub 剛建立的 Repository，並且進入 setting 頁面<br>並且下拉到 GitHub Pages，點選綠色框框裡的網址就可以成功連結到你的blog！</p>
-<p><img src="/img/md-img/004.png" alt=" "></p>
-<hr>
-<h3 id="Step08-更換Blog樣式主題"><a href="#Step08-更換Blog樣式主題" class="headerlink" title="Step08 更換Blog樣式主題"></a>Step08 更換Blog樣式主題</h3><p>可以進入連結 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a> 套用樣式</p>
-<p><img src="/img/md-img/005.png" alt=" "></p>
-<p>並且點選藍色大標，會連結到 Github 文件，並且按照文件安裝，就可以幫 Blog 套版囉！</p>
-<p><img src="/img/md-img/006.png" alt=" "></p>
+<p>沒使用 v-model 的情況下，輸入的 input 欄位是不會隨著你所打得內容作更動。<br><img src="https://i.imgur.com/kzVO2Cd.png" alt=" "></p>
+<p>新增 v-model 屬性之後。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是： &#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"age"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的年齡是： &#123;&#123;age&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"sex"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的性別是： &#123;&#123;sex&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用 v-model 雙向綁定，input 欄位就會隨著輸入的內容而跟著改變。<br><img src="https://i.imgur.com/73dYR37.png" alt=" "></p>
 
                 
 
@@ -257,10 +263,10 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/019vue01/" data-toggle="tooltip" data-placement="top" title="[ Vue ] Vue基礎架構 & 雙向綁定v-model">&larr; Previous Post</a>
-                        </li>
                     
+                        <li class="next">
+                            <a href="/article/build-blog/" data-toggle="tooltip" data-placement="top" title="Hexo 架設自己的 Blog">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
 
@@ -300,7 +306,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Hexo-架設自己的-Blog"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Hexo 架設自己的 Blog</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step01-先下載-Hexo"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">Step01 先下載 Hexo</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step02-建立資料夾-並且初始化"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">Step02 建立資料夾 並且初始化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step03-本地端開啟blog網頁"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">Step03 本地端開啟blog網頁</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step04-Push到GitHub"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">Step04 Push到GitHub</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step05-安裝Git"><span class="toc-nav-number">1.0.5.</span> <span class="toc-nav-text">Step05 安裝Git</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step06-將網站佈署到伺服器"><span class="toc-nav-number">1.0.6.</span> <span class="toc-nav-text">Step06 將網站佈署到伺服器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step07-設定repository"><span class="toc-nav-number">1.0.7.</span> <span class="toc-nav-text">Step07 設定repository</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Step08-更換Blog樣式主題"><span class="toc-nav-number">1.0.8.</span> <span class="toc-nav-text">Step08 更換Blog樣式主題</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Vue-基礎框架"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue 基礎框架</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#el-element-綁定"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">el: element 綁定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#data"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">data:{ }</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#雙向綁定-v-model"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">雙向綁定 v-model</span></a></li></ol>
         
         </div>
       </aside>
@@ -320,9 +326,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                          <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
                         
-                          <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                          <a class="tag" href="/tags/#Vue學習日記" title="Vue學習日記">Vue學習日記</a>
                         
                     </div>
                 </section>
