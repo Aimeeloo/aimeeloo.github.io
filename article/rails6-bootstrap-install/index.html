@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [ Vue.js ] 基礎架構 &amp; 雙向綁定v-model - Aimee Lo | Blog
+          Rail 6 引用 Brootsrap - Aimee Lo | Blog
         
     </title>
 
-    <link rel="canonical" href="http://a-min.art/article/019vue01/">
+    <link rel="canonical" href="http://a-min.art/article/rails6-bootstrap-install/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,16 +88,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
+                              <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
                             
-                              <a class="tag" href="/tags/#Vue學習日記" title="Vue學習日記">Vue學習日記</a>
+                              <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
                             
                         </div>
-                        <h1>[ Vue.js ] 基礎架構 &amp; 雙向綁定v-model</h1>
-                        <h2 class="subheading">Vue.js 菜鳥學習日記</h2>
+                        <h1>Rail 6 引用 Brootsrap</h1>
+                        <h2 class="subheading">升級到 rails 6 最大的差別大概就在前端 webpacker</h2>
                         <span class="meta">
                             Posted by Aimee on
-                            2019-11-01
+                            2019-11-07
                         </span>
                     </div>
                 
@@ -214,48 +214,23 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>菜鳥新手初學 Vue.js<br>在沒有導師得指導下，網路影片以及書籍是最好的學系來源了！<br>本次學習日記是參考表嚴肅 Vue.js 精講 01-20 集<br>影片連結也提供給大家，有興趣的人歡迎一起練習。</p>
-<blockquote>
-<p>表嚴肅<br>Vue.js 精講 01-20 集<br><a href="https://www.bilibili.com/video/av13450835/?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av13450835/?p=1</a></p>
-</blockquote>
-<hr>
-<h3 id="Vue-基礎框架"><a href="#Vue-基礎框架" class="headerlink" title="Vue 基礎框架"></a>Vue 基礎框架</h3><p>先進入 BootCDN 將 Vue 的 Js 檔案下載到本定端。<br><a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">https://www.bootcdn.cn/</a><br><img src="https://i.imgur.com/lW4X7nC.png" alt=" "></p>
-<p>我這學習日記使用的版本 Vue 版本 2.6.10<br>將這份JS下載到本地端 <a href="https://cdn.bootcss.com/vue/2.6.10/vue.js" target="_blank" rel="noopener">https://cdn.bootcss.com/vue/2.6.10/vue.js</a> </p>
-<p>並且建立 HTML 基礎框架，並將下載得檔案 require 近來。<br><img src="https://i.imgur.com/4lc977J.png" alt=" "></p>
-<blockquote>
-<p>注意！require Js 優先順序需要注意，否則會出現 Error。</p>
-</blockquote>
-<hr>
-<h3 id="el-element-綁定"><a href="#el-element-綁定" class="headerlink" title="el: element 綁定"></a>el: element 綁定</h3><p>在 require 的 main.js 新增</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,  <span class="comment">// element 元件綁定屬性 id = app</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>並且在 HTML 框架建立一個 id 屬性為 app</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是 &#123;&#123;typeof 1&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"..//lib/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+                <p>從 rails 5.2.3 突然升級到 rails 6，最大的差別大概就在前端 webpacker<br>webpacker 將 Bootstrap 打包在內，因此當我們想使用 Bootstrap 就必須用以下步驟來引用它。</p>
+<p>在開始之前，先建立一個專案，並且進入到專案目錄下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rails new project_name</span><br><span class="line">$ cd project_name</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>這時候打開網頁畫面會顯示 ‘ 你的名字是 number ’ 字樣</p>
-</blockquote>
-<p>出現兩個花括號時<br>Vue 會開始解析花括號內當成類似 JS 的內容<br>但並不是所有 JS 都可以解析。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#125;&#125; <span class="comment">&lt;!-- 兩個花括號，用來做資料顯示綁定 --&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="引用-Bootstrap"><a href="#引用-Bootstrap" class="headerlink" title="引用 Bootstrap"></a>引用 Bootstrap</h3><p>1.用 Yarn 安裝 Bootstrap 及相關套件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add bootstrap jquery popper.js</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h3 id="data"><a href="#data" class="headerlink" title="data:{ }"></a>data:{ }</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是 &#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span>   <span class="comment">&lt;!-- 會去尋找 main.js 裡頭有沒有 name --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"..//lib/vue.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.設定Webpacker<br>開啟 config/webpack/environment.js, 加入下方程式碼：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; environment &#125; = <span class="built_in">require</span>(<span class="string">'@rails/webpacker'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line">environment.plugins.append(</span><br><span class="line"><span class="string">'Provide'</span>,</span><br><span class="line"><span class="keyword">new</span> webpack.ProvidePlugin(&#123;</span><br><span class="line">$: <span class="string">'jquery'</span>,</span><br><span class="line">jQuery: <span class="string">'jquery'</span>,</span><br><span class="line">Popper: [<span class="string">'popper.js'</span>, <span class="string">'default'</span>],</span><br><span class="line">&#125;)</span><br><span class="line">);</span><br><span class="line"><span class="built_in">module</span>.exports = environment;</span><br></pre></td></tr></table></figure>
 
-<p>在 Vue 的所有數據，都必須放在一個叫 <code>data:{}</code> 的屬性裏頭<br>所以修改 main.js 內容，新增 <code>data:{}</code>，且將 name 寫進來 </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>, </span><br><span class="line">  data: &#123;</span><br><span class="line">    name: <span class="string">'A'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>網頁畫面就會顯示 ‘你的名字是 A’</p>
-</blockquote>
-<hr>
-<h3 id="雙向綁定-v-model"><a href="#雙向綁定-v-model" class="headerlink" title="雙向綁定 v-model"></a>雙向綁定 v-model</h3><p><code>v-model</code> 是 Vue.js 所提供的方法，用於 <code>雙向綁定</code></p>
-<p>一開始先將會使用到的數據一樣先寫入 JS 的 data</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>, </span><br><span class="line">  data: &#123;</span><br><span class="line">    name: <span class="string">'A'</span>,</span><br><span class="line">    age: <span class="string">'18'</span>,</span><br><span class="line">    sex: <span class="string">'F'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>當我們給他 <code>&lt;input&gt;</code> 時，尚未使用 v-model 屬性。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是： &#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的年齡是： &#123;&#123;age&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的性別是： &#123;&#123;sex&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.開啟檔案：app/javascript/packs/application.js, 加入下方程式碼：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'bootstrap'</span>);</span><br></pre></td></tr></table></figure>
 
-<p>沒使用 v-model 的情況下，輸入的 input 欄位是不會隨著你所打得內容作更動。<br><img src="https://i.imgur.com/kzVO2Cd.png" alt=" "></p>
-<p>新增 v-model 屬性之後。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的名字是： &#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"age"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的年齡是： &#123;&#123;age&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"sex"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>你的性別是： &#123;&#123;sex&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>使用 v-model 雙向綁定，input 欄位就會隨著輸入的內容而跟著改變。<br><img src="https://i.imgur.com/73dYR37.png" alt=" "></p>
+<p>4.打開 app/assets/stylesheets/application.css, 加入下方程式碼：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">'bootstrap/scss/bootstrap'</span></span><br></pre></td></tr></table></figure>
+
+<p>以上，恭喜完成安裝，可以正常使用 bootstrap 囉！</p>
 
                 
 
@@ -263,13 +238,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/rails6-bootstrap-install/" data-toggle="tooltip" data-placement="top" title="Rail 6 引用 Brootsrap">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/build-blog/" data-toggle="tooltip" data-placement="top" title="Hexo 架設自己的 Blog">Next Post &rarr;</a>
+                            <a href="/article/019vue01/" data-toggle="tooltip" data-placement="top" title="[ Vue.js ] 基礎架構 & 雙向綁定v-model">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -310,7 +281,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Vue-基礎框架"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Vue 基礎框架</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#el-element-綁定"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">el: element 綁定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#data"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">data:{ }</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#雙向綁定-v-model"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">雙向綁定 v-model</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引用-Bootstrap"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">引用 Bootstrap</span></a></li></ol>
         
         </div>
       </aside>
@@ -330,9 +301,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
+                          <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
                         
-                          <a class="tag" href="/tags/#Vue學習日記" title="Vue學習日記">Vue學習日記</a>
+                          <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
                         
                     </div>
                 </section>
