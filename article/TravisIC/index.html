@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [11th鐵人賽] Day 02 | 環境安裝不可少的 RVM  - Aimee Lo | Blog
+          新手 Travis CI 設定 - Aimee Lo | Blog
         
     </title>
 
-    <link rel="canonical" href="http://a-min.art/article/19ithelp/ironman02/">
+    <link rel="canonical" href="http://a-min.art/article/TravisIC/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,16 +88,18 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#IT邦幫忙" title="IT邦幫忙">IT邦幫忙</a>
+                              <a class="tag" href="/tags/#Ruby on Rails" title="Ruby on Rails">Ruby on Rails</a>
                             
-                              <a class="tag" href="/tags/#11th鐵人賽" title="11th鐵人賽">11th鐵人賽</a>
+                              <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
+                            
+                              <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
                             
                         </div>
-                        <h1>[11th鐵人賽] Day 02 | 環境安裝不可少的 RVM </h1>
-                        <h2 class="subheading">IT邦幫忙 11th鐵人賽 自我挑戰組 完賽</h2>
+                        <h1>新手 Travis CI 設定</h1>
+                        <h2 class="subheading">僅支援 Github 的 Travis CI</h2>
                         <span class="meta">
                             Posted by Aimee on
-                            2019-09-18
+                            2019-11-18
                         </span>
                     </div>
                 
@@ -214,43 +216,44 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>在開始安裝Ruby之前，第一步我們要先來認識並且安裝RVM，它是我們必不可缺少的工具之一。</p>
-<h3 id="RVM是什麼？"><a href="#RVM是什麼？" class="headerlink" title="RVM是什麼？"></a>RVM是什麼？</h3><p>RVM全名 Ruby Version Manager，是一個命令行工具，提供Ruby版本環境的管理和切換，簡單的說法就是Ruby版本控制器。</p>
-<p>Ruby從前至今擁有許多的版本，以及眾多得分支(e.g. JRuby/Rubinius/Macruby/mruby 等)，當自己想在電腦上安裝不同版本的Ruby時，可能會發生不必要的衝突，而導致工作環境出問題，因此為了避免錯誤發生，在正式開始安裝Ruby之前，請務必先將RVM安裝完成。完成安裝之後，就可以在自己電腦裡隨心所欲的安裝以及切換多個不同版本的Ruby 。</p>
-<h3 id="安裝RVM"><a href="#安裝RVM" class="headerlink" title="安裝RVM"></a>安裝RVM</h3><p>RVM官網 <a href="https://rvm.io/" target="_blank" rel="noopener">https://rvm.io/</a></p>
-<p>進入RVM官網，請拉到以下畫面，直接複製並且執行第二行命令<br><img src="https://i.imgur.com/FWZPFOE.jpg" alt=" "></p>
-<p>執行後會跑出失敗訊息，因為在安裝過程中因為少了Key導致無法連線<br>因此請複製訊息中的gpg金鑰並且命令執行 (如果沒有跳出以下圖示，基本上是已經順利安裝)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GPG signature verification failed for &apos;/Users/min/.rvm/archives/rvm-1.29.9.tgz&apos; - &apos;https://github.com/rvm/rvm/releases/download/1.29.9/1.29.9.tar.gz.asc&apos;! Try to install GPG v2 and then fetch the public key:</span><br><span class="line"></span><br><span class="line">    gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB</span><br><span class="line"></span><br><span class="line">or if it fails:</span><br><span class="line"></span><br><span class="line">    command curl -sSL https://rvm.io/mpapis.asc | gpg --import -</span><br><span class="line">    command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -</span><br><span class="line"></span><br><span class="line">In case of further problems with validation please refer to https://rvm.io/rvm/security</span><br></pre></td></tr></table></figure>
-<p>gpg執行完成之後，再重新跑一次</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \curl -sSL https://get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
-<p>在最後一行的畫面有出現以下<code>Donate</code>訊息<br>恭喜你成功完成安裝RVM！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Donate: http://opencollective.com/rvm/donate</span><br></pre></td></tr></table></figure>
+                <p>Travis Cl 持續整合自動化測試<br>設定好之後，只要每次 push 上 GitHub 就會自動幫你跑 Rspec</p>
+<h3 id="Travis-CI-與-GitHub-的連結設定"><a href="#Travis-CI-與-GitHub-的連結設定" class="headerlink" title="Travis CI 與 GitHub 的連結設定"></a>Travis CI 與 GitHub 的連結設定</h3><p>請點網址進入Travis CI官網 <a href="https://travis-ci.org/" target="_blank" rel="noopener">travis-ci.org</a><br>示範僅提供給 public repository 使用。</p>
+<blockquote>
+<p>若是想要存取 private repository，請從 <a href="https://travis-ci.com/" target="_blank" rel="noopener">travis-ci.com</a> 這個網址進入。</p>
+</blockquote>
+<p><img src="https://i.imgur.com/bAMjSMS.png" alt=" "></p>
+<p>進行註冊，首次登入 Travis CI 會與使用者確認與 GitHub 存取項目與行為</p>
+<p><img src="https://i.imgur.com/r77GWFf.png" alt=" "></p>
+<p>成功登入，看到以下畫面<br><img src="https://i.imgur.com/uTtwKAb.png" alt=" "></p>
+<p>接下來在右下角 Legacy Services Integrtion 區塊，找到你要進行 CI 的 repository，並且開啟整合功能，開啟之後 Tracis IC 就會自動與 GitHub 進行連接設定喔！<br><img src="https://i.imgur.com/zvgVbpQ.png" alt=" "></p>
+<p>可以開啟 GitHub 的 webhooks 查看。<br><img src="https://i.imgur.com/r5JL2XJ.png" alt=" "></p>
+<hr>
+<h3 id="專案設定"><a href="#專案設定" class="headerlink" title="專案設定"></a>專案設定</h3><p>接著在開啟專案，並且安裝 <a href="https://rubygems.org/gems/travis" target="_blank" rel="noopener">Gem Travis</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;travis&apos;, &apos;~&gt; 1.8&apos;, &apos;&gt;= 1.8.10&apos;</span><br></pre></td></tr></table></figure>
+<p>在 Terminal 登入 GitHub</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ travis login</span><br></pre></td></tr></table></figure>
+<p>登入完成後，使用命令要產生 <code>.travis.yml</code> 檔案</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ travis init</span><br></pre></td></tr></table></figure>
 
-<h3 id="安裝Ruby"><a href="#安裝Ruby" class="headerlink" title="安裝Ruby"></a>安裝Ruby</h3><p>檢視所有RVM中可安裝的Ruby版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list known</span><br><span class="line"></span><br><span class="line"># MRI Rubies</span><br><span class="line">[ruby-]1.8.6[-p420]</span><br><span class="line">[ruby-]1.8.7[-head] # security released on head</span><br><span class="line">[ruby-]1.9.1[-p431]</span><br><span class="line">[ruby-]1.9.2[-p330]</span><br><span class="line">[ruby-]1.9.3[-p551]</span><br><span class="line">[ruby-]2.0.0[-p648]</span><br><span class="line">[ruby-]2.1[.10]</span><br><span class="line">[ruby-]2.2[.10]</span><br><span class="line">[ruby-]2.3[.8]</span><br><span class="line">[ruby-]2.4[.6]</span><br><span class="line">[ruby-]2.5[.5]</span><br><span class="line">[ruby-]2.6[.3]</span><br><span class="line">[ruby-]2.7[.0-preview1]</span><br><span class="line">ruby-head</span><br><span class="line"></span><br><span class="line"># for forks use: rvm install ruby-head-&lt;name&gt; --url https://github.com/github/ruby.git --branch 2.2</span><br></pre></td></tr></table></figure>
-<p>選擇版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm install ruby 2.6.3</span><br></pre></td></tr></table></figure>
-<p>當你安裝多個版本時，可以用 rvm use 切換置你要使用的版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm use 2.6.3</span><br></pre></td></tr></table></figure>
-<p>如果重新打開的控制台默認的Ruby版本，可用以下命令設置為默認版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm use 2.6.3 --default</span><br></pre></td></tr></table></figure>
-<p>查詢已經安裝的ruby版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list</span><br><span class="line">=&gt; ruby-2.5.5 [ x86_64 ]</span><br><span class="line"> * ruby-2.6.3 [ x86_64 ]</span><br><span class="line"></span><br><span class="line"># =&gt; - current </span><br><span class="line"># =* - current &amp;&amp; default </span><br><span class="line">#  * - default</span><br></pre></td></tr></table></figure>
-<p>卸載已安裝版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm remove 2.6.3</span><br></pre></td></tr></table></figure>
+<p>編輯 .travis.yml 設定檔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">language: ruby</span><br><span class="line">rvm:</span><br><span class="line">- 2.6.3</span><br><span class="line">services:</span><br><span class="line">  - postgresql</span><br><span class="line">env:</span><br><span class="line">  - DB=pgsql</span><br><span class="line">before_script:</span><br><span class="line">  - psql -c &apos;create database calendar_test;&apos; -U postgres</span><br><span class="line">script:</span><br><span class="line">  - bundle exec rake db:setup</span><br><span class="line">  - RAILS_ENV=test bundle exec rake db:migrate</span><br><span class="line">  - bundle exec rake spec</span><br></pre></td></tr></table></figure>
+
+<p>安裝 travis-lint</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem install travis-lint</span><br></pre></td></tr></table></figure>
+<p>執行 travis lint，看到這段代表成功囉 <code>Hooray, .travis.yml looks valid :)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ travis lint</span><br></pre></td></tr></table></figure>
+
+<p>接下來可以使用 <code>$ travis open</code> 查看結果<br><img src="https://i.imgur.com/WE2y23H.png" alt="Imgur"></p>
+
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/article/19ithelp/ironman03/" data-toggle="tooltip" data-placement="top" title="[11th鐵人賽] Day03 | RVM的Gemsets？">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/article/19ithelp/ironman01/" data-toggle="tooltip" data-placement="top" title="[11th鐵人賽] Day01 | 準備入村">Next Post &rarr;</a>
+                            <a href="/article/RoR-enum/" data-toggle="tooltip" data-placement="top" title="Rails 狀態設定 Enum">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -291,7 +294,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#RVM是什麼？"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">RVM是什麼？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安裝RVM"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">安裝RVM</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#安裝Ruby"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">安裝Ruby</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Travis-CI-與-GitHub-的連結設定"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Travis CI 與 GitHub 的連結設定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#專案設定"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">專案設定</span></a></li></ol>
         
         </div>
       </aside>
@@ -311,9 +314,11 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#IT邦幫忙" title="IT邦幫忙">IT邦幫忙</a>
+                          <a class="tag" href="/tags/#Ruby on Rails" title="Ruby on Rails">Ruby on Rails</a>
                         
-                          <a class="tag" href="/tags/#11th鐵人賽" title="11th鐵人賽">11th鐵人賽</a>
+                          <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
+                        
+                          <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
                         
                     </div>
                 </section>

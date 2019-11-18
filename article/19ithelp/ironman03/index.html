@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [ 系統 ] Theme HuWeihuang - Aimee Lo | Blog
+          [11th鐵人賽] Day03 | RVM的Gemsets？ - Aimee Lo | Blog
         
     </title>
 
-    <link rel="canonical" href="http://a-min.art/article/hexo-theme-huweihuang/">
+    <link rel="canonical" href="http://a-min.art/article/19ithelp/ironman03/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,14 +88,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                              <a class="tag" href="/tags/#IT邦幫忙" title="IT邦幫忙">IT邦幫忙</a>
+                            
+                              <a class="tag" href="/tags/#11th鐵人賽" title="11th鐵人賽">11th鐵人賽</a>
                             
                         </div>
-                        <h1>[ 系統 ] Theme HuWeihuang</h1>
-                        <h2 class="subheading">This is hexo theme Demo.</h2>
+                        <h1>[11th鐵人賽] Day03 | RVM的Gemsets？</h1>
+                        <h2 class="subheading">IT邦幫忙 11th鐵人賽 自我挑戰組 完賽</h2>
                         <span class="meta">
                             Posted by Aimee on
-                            2019-09-18
+                            2019-09-19
                         </span>
                     </div>
                 
@@ -142,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -212,51 +214,32 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <blockquote>
-<p>This HuWeihuang theme created by <a href="http://www.huweihuang.com/" target="_blank" rel="noopener">HuWeihuang</a> modified from the original Porter <a href="https://github.com/YenYuHsuan/hexo-theme-beantech" target="_blank" rel="noopener">YuHsuan</a></p>
+                <p>在觀看關於 RVM 的文章時，其中有一部份會提到 Gemsets，<br>基於菜鳥好奇心，決定來寫篇關於 gemsets 文章。</p>
+<h3 id="Gemsets"><a href="#Gemsets" class="headerlink" title="Gemsets"></a>Gemsets</h3><p>Gemsets 是 RVM 的功能之一，它提供一個獨立的環境空間，所以不同版本的 Ruby 可以擁有多個 gemsets，而且gemsets 之間都是各自獨立互不相干的，也都可以分別安裝多個 gems。</p>
+<p>舉例說明，當你擁有多版本的 Ruby 時，假設目前使用的 Ruby2.6.3 版本，建立兩個 gemset 名稱分別為 r523 跟 r600，並且在 r523 的 gemset 安裝 Rails5.2.3 版本，可是當你切換到 gemset 的 r600 版本時，Rails5.2.3 的 gemset 就不存在了。所以我們可以透過 Gemsets 擁有分別建立兩套 gem 的獨立空間，而且方便在開發時切換使用。</p>
+<p>大概是長這樣。<br><img src="https://i.imgur.com/8psezTi.png" alt=" "></p>
+<p>用命令了解 gemset<br>用程式碼來跑一下流程，以 Ruby2.6.3 版本為例<br>首先用 <code>$ rvm gemset list</code> 來查看狀態。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset list</span><br><span class="line"></span><br><span class="line">gemsets for ruby-2.6.3 (found in /Users/min/.rvm/gems/ruby-2.6.3)</span><br><span class="line">=&gt; (default)</span><br><span class="line">   global</span><br></pre></td></tr></table></figure>
+<p>目前尚未建立任何 gemset。</p>
+<blockquote>
+<p>default：不指定 gemset，Gem 都安装在默認環境下<br>global：安裝在 global 中的 Gem 會被其他 gemset 繼承</p>
 </blockquote>
-<h1 id="Live-Demo"><a href="#Live-Demo" class="headerlink" title="Live Demo"></a>Live Demo</h1><p>Hu Weihuang Blog : <a href="http://www.huweihuang.com/" target="_blank" rel="noopener">www.huweihuang.com</a></p>
-<p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1553666111/blog/blog.jpg" alt="Theme HuWeihuang"></p>
-<h1 id="Install-Hexo"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo</h1><p>Install Node.js  and Git</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">For Mac</span></span><br><span class="line">brew install node</span><br><span class="line">brew install git</span><br></pre></td></tr></table></figure>
-
-<p>Install hexo</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">For more:https://hexo.io/zh-cn/index.html</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Theme-Usage"><a href="#Theme-Usage" class="headerlink" title="Theme Usage"></a>Theme Usage</h1><h2 id="Init"><a href="#Init" class="headerlink" title="Init"></a>Init</h2><hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/huweihuang/hexo-theme-huweihuang.git ./hexo-huweihuang</span><br><span class="line"><span class="built_in">cd</span> hexo-huweihuang</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<h2 id="Modify"><a href="#Modify" class="headerlink" title="Modify"></a>Modify</h2><hr>
-<p>Modify <code>_config.yml</code> file with your own info.<br>Especially the section:</p>
-<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p>Replace to your own repo!</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/&lt;yourAccount&gt;/&lt;repo&gt;</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">&lt;your-branch&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Sidebar-settings"><a href="#Sidebar-settings" class="headerlink" title="Sidebar settings"></a>Sidebar settings</h3><p>Copy your avatar image to <code>&lt;root&gt;/img/</code> and modify the <code>_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sidebar:</span> <span class="literal">true</span>    <span class="comment"># whether or not using Sidebar.</span></span><br><span class="line"><span class="attr">sidebar-about-description:</span> <span class="string">"&lt;your description&gt;"</span></span><br><span class="line"><span class="attr">sidebar-avatar:</span> <span class="string">img/&lt;your</span> <span class="string">avatar</span> <span class="string">path&gt;</span></span><br></pre></td></tr></table></figure>
-<p>and activate your personal widget you like</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">widgets:</span>         <span class="comment"># here are widget you can use, you can comment out</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">featured-tags</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">short-about</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">recent-posts</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">friends-blog</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">archive</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">category</span></span><br></pre></td></tr></table></figure>
-<p>if you want to add sidebar widget, please add at <code>layout/_widget</code>.</p>
-<h3 id="Signature-Setup"><a href="#Signature-Setup" class="headerlink" title="Signature Setup"></a>Signature Setup</h3><p>Copy your signature image to <code>&lt;root&gt;/img/signature</code> and modify the <code>_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">signature:</span> <span class="literal">true</span>   <span class="comment"># show signature</span></span><br><span class="line"><span class="attr">signature-img:</span> <span class="string">img/signature/&lt;your-signature-ID&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Go-to-top-icon-Setup"><a href="#Go-to-top-icon-Setup" class="headerlink" title="Go to top icon Setup"></a>Go to top icon Setup</h3><p>My icon is using iron man, you can change to your own icon at <code>css/image</code>.</p>
-<h3 id="Post-tag"><a href="#Post-tag" class="headerlink" title="Post tag"></a>Post tag</h3><p>You can decide to show post tags or not.</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">home_posts_tag:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p><img src="/img/article/tag.png" alt="home_posts_tag-true"></p>
-<h3 id="Markdown-render"><a href="#Markdown-render" class="headerlink" title="Markdown render"></a>Markdown render</h3><p>My markdown render engine plugin is <a href="https://github.com/celsomiranda/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a>.</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Markdown-it config</span></span><br><span class="line"><span class="comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span></span><br><span class="line"><span class="attr">markdown:</span></span><br><span class="line"><span class="attr">  render:</span></span><br><span class="line"><span class="attr">    html:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    xhtmlOut:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    breaks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    linkify:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    typographer:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    quotes:</span> <span class="string">'“”‘’'</span></span><br></pre></td></tr></table></figure>
-<p>and if you want to change the header anchor ‘ℬ’, you can go to <code>layout/post.ejs</code> to change it.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span>(<span class="string">"https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        anchors.options = &#123;</span><br><span class="line">          visible: <span class="string">'hover'</span>,</span><br><span class="line">          placement: <span class="string">'left'</span>,</span><br><span class="line">          icon: ℬ <span class="comment">// this is the header anchor "unicode" icon</span></span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Hexo-Basics"><a href="#Hexo-Basics" class="headerlink" title="Hexo Basics"></a>Hexo Basics</h2><hr>
-<p>Some hexo command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"&lt;post name&gt;"</span> <span class="comment"># you can change post to another layout if you want</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate <span class="comment"># generate the static file</span></span><br><span class="line">hexo server <span class="comment"># run hexo in local environment</span></span><br><span class="line">hexo deploy <span class="comment"># hexo will push the static files automatically into the specific branch(gh-pages) of your repo!</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Have-fun"><a href="#Have-fun" class="headerlink" title="Have fun ^_^"></a>Have fun ^_^</h1><hr>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Place this tag where you want the button to render. -->
-
-<p>Please <a class="github-button" href="https://github.com/huweihuang/hexo-theme-huweihuang" target="_blank" rel="noopener" data-icon="octicon-star" aria-label="Star huweihuang/hexo-theme-huweihuang on GitHub">Star</a> this Project if you like it! <a class="github-button" href="https://github.com/huweihuang" target="_blank" rel="noopener" aria-label="Follow @huweihuang on GitHub">Follow</a> would also be appreciated!<br>Peace!</p>
+<h3 id="開始建立gemset"><a href="#開始建立gemset" class="headerlink" title="開始建立gemset"></a>開始建立gemset</h3><p><code>$ rvm gemset create &lt;gemset_name&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset create r523</span><br><span class="line">ruby-2.6.3 - #gemset created /Users/min/.rvm/gems/ruby-2.6.3@r523</span><br><span class="line">ruby-2.6.3 - #generating r523 wrappers.......</span><br><span class="line"></span><br><span class="line">$ rvm gemset create r600</span><br><span class="line">ruby-2.6.3 - #gemset created /Users/min/.rvm/gems/ruby-2.6.3@r600</span><br><span class="line">ruby-2.6.3 - #generating r600 wrappers.......</span><br></pre></td></tr></table></figure>
+<p>此時就可以在 gemset list 看到我們剛建立好的 <code>r523</code> 以及 <code>r600</code> 的 gemset</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset list</span><br><span class="line"></span><br><span class="line">gemsets for ruby-2.6.3 (found in /Users/min/.rvm/gems/ruby-2.6.3)</span><br><span class="line">=&gt; (default) </span><br><span class="line">   global </span><br><span class="line">   r523</span><br><span class="line">   r600</span><br></pre></td></tr></table></figure>
+<h3 id="切換版本"><a href="#切換版本" class="headerlink" title="切換版本"></a>切換版本</h3><p>再來可以使用 <code>$ rvm use &lt;gemset&gt;</code> 切換<br>假設要切換 Ruby2.6.3 名稱 r600 的 gemset，命令寫成 <code>2.6.3@r600</code> 表示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ rvm use 2.6.3@r600</span><br><span class="line">Using /Users/min/.rvm/gems/ruby-2.6.3 with gemset r600</span><br><span class="line"></span><br><span class="line">$ rvm gemset list</span><br><span class="line">gemsets for ruby-2.6.3 (found in /Users/min/.rvm/gems/ruby-2.6.3)</span><br><span class="line">   (default)</span><br><span class="line">   global</span><br><span class="line">   r523   # 2.6.3@r523</span><br><span class="line">=&gt; r600   # 2.6.3@r600</span><br></pre></td></tr></table></figure>
+<p>再來，當我們安裝了 Rails6.0.0 版本在 2.6.3@r600，可以在 gem list 看到 Rails6.0.0 版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ gem list</span><br><span class="line"></span><br><span class="line">...(略過)...</span><br><span class="line"> </span><br><span class="line">rack (2.0.7)</span><br><span class="line">rack-test (1.1.0)</span><br><span class="line">rails (6.0.0)</span><br><span class="line">rails-dom-testing (2.0.3)</span><br><span class="line">rails-html-sanitizer (1.2.0)</span><br><span class="line">railties (6.0.0)</span><br></pre></td></tr></table></figure>
+<p>可是當我們切換到 2.6.3@r523，就看不到剛剛安裝得 Rails6.0.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ gem list</span><br><span class="line"></span><br><span class="line">...(略過)...</span><br><span class="line"> </span><br><span class="line">rake (12.3.2)</span><br><span class="line">rdoc (default: 6.1.0)</span><br><span class="line">rexml (default: 3.1.9)</span><br><span class="line">rss (default: 0.2.7)</span><br><span class="line">rubygems-bundler (1.4.5)</span><br><span class="line">rvm (1.11.3.9)</span><br></pre></td></tr></table></figure>
+<h3 id="清空及刪除"><a href="#清空及刪除" class="headerlink" title="清空及刪除"></a>清空及刪除</h3><p>當你套件安裝過多的時候，可以用以下命令重置清空 gemset 裡的 gems</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset empty 2.6.3@r600</span><br></pre></td></tr></table></figure>
+<p>或者刪除不需要的 gemset</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset delete r523</span><br><span class="line">Are you SURE you wish to remove the entire gemset directory &apos;r523&apos; (/Users/min/.rvm/gems/ruby-2.6.3@r523)?</span><br><span class="line">(anything other than &apos;yes&apos; will cancel) &gt; yes</span><br><span class="line">Removing gemset r523......</span><br></pre></td></tr></table></figure>
+<p>恭喜你，成功刪除！還不會影響到其他開發環境呢！</p>
+<h3 id="那什麼狀況會用到Gemsets？"><a href="#那什麼狀況會用到Gemsets？" class="headerlink" title="那什麼狀況會用到Gemsets？"></a>那什麼狀況會用到Gemsets？</h3><p>據說在以前沒有bundler的時候，大家都會建立gemsets來做環境切換，確實是方便許多。不過在後期，bundler的出現似乎搶走了gemsets的風采，每個gem都可以憑Bundler生成，利用Gemfile、Gemfile.lock管理版本號相依關係，那Gemset還有存在的必要嗎？身為菜鳥我也不是很清楚，但沒事就拿來玩玩當練功！不喜歡再刪掉就好啦 ddd</p>
 
                 
 
@@ -268,6 +251,10 @@
                             <a href="/article/build-blog/" data-toggle="tooltip" data-placement="top" title="Hexo 架設自己的 Blog">&larr; Previous Post</a>
                         </li>
                     
+                    
+                        <li class="next">
+                            <a href="/article/19ithelp/ironman02/" data-toggle="tooltip" data-placement="top" title="[11th鐵人賽] Day 02 | 環境安裝不可少的 RVM ">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
 
@@ -307,7 +294,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Live-Demo"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Live Demo</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Install-Hexo"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Install Hexo</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Theme-Usage"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Theme Usage</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Init"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">Init</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Modify"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Modify</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Deployment"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">Deployment</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Sidebar-settings"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">Sidebar settings</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Signature-Setup"><span class="toc-nav-number">3.2.3.</span> <span class="toc-nav-text">Signature Setup</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Go-to-top-icon-Setup"><span class="toc-nav-number">3.2.4.</span> <span class="toc-nav-text">Go to top icon Setup</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Post-tag"><span class="toc-nav-number">3.2.5.</span> <span class="toc-nav-text">Post tag</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Markdown-render"><span class="toc-nav-number">3.2.6.</span> <span class="toc-nav-text">Markdown render</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Hexo-Basics"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Hexo Basics</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Have-fun"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Have fun ^_^</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Gemsets"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Gemsets</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#開始建立gemset"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">開始建立gemset</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#切換版本"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">切換版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#清空及刪除"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">清空及刪除</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#那什麼狀況會用到Gemsets？"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">那什麼狀況會用到Gemsets？</span></a></li></ol>
         
         </div>
       </aside>
@@ -327,7 +314,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                          <a class="tag" href="/tags/#IT邦幫忙" title="IT邦幫忙">IT邦幫忙</a>
+                        
+                          <a class="tag" href="/tags/#11th鐵人賽" title="11th鐵人賽">11th鐵人賽</a>
                         
                     </div>
                 </section>
@@ -340,7 +329,9 @@
                 <ul class="list-inline">
 
                     
-                        <li><a href="https://axelchen.com/" target="_blank">陳宥誠 Blog</a></li>
+                        <li><a href="https://axelchen.com/" target="_blank">Axel</a></li>
+                    
+                        <li><a href="https://joanliao.space/" target="_blank">Joanliao</a></li>
                     
                 </ul>
                 
