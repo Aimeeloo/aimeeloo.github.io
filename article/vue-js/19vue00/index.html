@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          新手 Travis CI 設定 - Aimee Lo | Blog
+          [ Vue.js ] 基礎起手式 - Aimee Lo | Blog
         
     </title>
 
-    <link rel="canonical" href="http://a-min.art/article/TravisIC/">
+    <link rel="canonical" href="http://a-min.art/article/vue-js/19vue00/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,18 +88,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Ruby on Rails" title="Ruby on Rails">Ruby on Rails</a>
+                              <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
                             
-                              <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
-                            
-                              <a class="tag" href="/tags/#Travis IC" title="Travis IC">Travis IC</a>
+                              <a class="tag" href="/tags/#Vue.js 菜鳥學習日記" title="Vue.js 菜鳥學習日記">Vue.js 菜鳥學習日記</a>
                             
                         </div>
-                        <h1>新手 Travis CI 設定</h1>
-                        <h2 class="subheading">僅支援 Github 的 Travis CI</h2>
+                        <h1>[ Vue.js ] 基礎起手式</h1>
+                        <h2 class="subheading">Vue.js 菜鳥學習日記</h2>
                         <span class="meta">
                             Posted by Aimee on
-                            2019-11-18
+                            2019-11-01
                         </span>
                     </div>
                 
@@ -216,34 +214,18 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>Travis Cl 持續整合自動化測試<br>設定好之後，只要每次 push 上 GitHub 就會自動幫你跑 Rspec</p>
-<h3 id="Travis-CI-與-GitHub-的連結設定"><a href="#Travis-CI-與-GitHub-的連結設定" class="headerlink" title="Travis CI 與 GitHub 的連結設定"></a>Travis CI 與 GitHub 的連結設定</h3><p>請點網址進入Travis CI官網 <a href="https://travis-ci.org/" target="_blank" rel="noopener">travis-ci.org</a><br>示範僅提供給 public repository 使用。</p>
+                <h3 id="建立基礎框架"><a href="#建立基礎框架" class="headerlink" title="建立基礎框架"></a>建立基礎框架</h3><p>進入 BootCDN 將 Vue 的 js 檔案下載到本定端。<br><a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">https://www.bootcdn.cn/</a><br><img src="https://i.imgur.com/lW4X7nC.png" alt=" "></p>
+<p>目前使用的版本為 Vue 2.6.10<br>將這份JS下載到本地端 <a href="https://cdn.bootcss.com/vue/2.6.10/vue.js" target="_blank" rel="noopener">https://cdn.bootcss.com/vue/2.6.10/vue.js</a> </p>
+<p>建立基礎框架，並將下載得檔案 require 近來。<br><img src="https://i.imgur.com/4lc977J.png" alt=" "></p>
 <blockquote>
-<p>若是想要存取 private repository，請從 <a href="https://travis-ci.com/" target="_blank" rel="noopener">travis-ci.com</a> 這個網址進入。</p>
+<p>注意！require Js 優先順序需要注意，否則會出現 Error。</p>
 </blockquote>
-<p><img src="https://i.imgur.com/bAMjSMS.png" alt=" "></p>
-<p>進行註冊，首次登入 Travis CI 會與使用者確認與 GitHub 存取項目與行為</p>
-<p><img src="https://i.imgur.com/r77GWFf.png" alt=" "></p>
-<p>成功登入，看到以下畫面<br><img src="https://i.imgur.com/uTtwKAb.png" alt=" "></p>
-<p>接下來在右下角 Legacy Services Integrtion 區塊，找到你要進行 CI 的 repository，並且開啟整合功能，開啟之後 Tracis IC 就會自動與 GitHub 進行連接設定喔！<br><img src="https://i.imgur.com/zvgVbpQ.png" alt=" "></p>
-<p>可以開啟 GitHub 的 webhooks 查看。<br><img src="https://i.imgur.com/r5JL2XJ.png" alt=" "></p>
 <hr>
-<h3 id="專案設定"><a href="#專案設定" class="headerlink" title="專案設定"></a>專案設定</h3><p>接著在開啟專案，並且安裝 <a href="https://rubygems.org/gems/travis" target="_blank" rel="noopener">Gem Travis</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem &apos;travis&apos;, &apos;~&gt; 1.8&apos;, &apos;&gt;= 1.8.10&apos;</span><br></pre></td></tr></table></figure>
-<p>在 Terminal 登入 GitHub</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ travis login</span><br></pre></td></tr></table></figure>
-<p>登入完成後，使用命令要產生 <code>.travis.yml</code> 檔案</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ travis init</span><br></pre></td></tr></table></figure>
-
-<p>編輯 .travis.yml 設定檔</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">language: ruby</span><br><span class="line">rvm:</span><br><span class="line">- 2.6.3</span><br><span class="line">services:</span><br><span class="line">  - postgresql</span><br><span class="line">env:</span><br><span class="line">  - DB=pgsql</span><br><span class="line">before_script:</span><br><span class="line">  - psql -c &apos;create database calendar_test;&apos; -U postgres</span><br><span class="line">script:</span><br><span class="line">  - bundle exec rake db:setup</span><br><span class="line">  - RAILS_ENV=test bundle exec rake db:migrate</span><br><span class="line">  - bundle exec rake spec</span><br></pre></td></tr></table></figure>
-
-<p>安裝 travis-lint</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem install travis-lint</span><br></pre></td></tr></table></figure>
-<p>執行 travis lint，看到這段代表成功囉 <code>Hooray, .travis.yml looks valid :)</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ travis lint</span><br></pre></td></tr></table></figure>
-
-<p>接下來可以使用 <code>$ travis open</code> 查看結果<br><img src="https://i.imgur.com/WE2y23H.png" alt="Imgur"></p>
+<h3 id="基礎起手式"><a href="#基礎起手式" class="headerlink" title="基礎起手式"></a>基礎起手式</h3><p>javascript</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>這先開起 codepen 試試看<br>可以成功在畫面顯示 Hello 字樣<br><img src="https://i.imgur.com/pnwYZTB.png" alt=" "></p>
 
                 
 
@@ -251,9 +233,13 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/article/vue-js/19vue01/" data-toggle="tooltip" data-placement="top" title="[ Vue.js ] 基礎架構 & 雙向綁定v-model">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
-                            <a href="/article/RoR-enum/" data-toggle="tooltip" data-placement="top" title="Rails 狀態設定 Enum">Next Post &rarr;</a>
+                            <a href="/article/build-blog/" data-toggle="tooltip" data-placement="top" title="Hexo 架設自己的 Blog">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -294,7 +280,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Travis-CI-與-GitHub-的連結設定"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Travis CI 與 GitHub 的連結設定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#專案設定"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">專案設定</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#建立基礎框架"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">建立基礎框架</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#基礎起手式"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">基礎起手式</span></a></li></ol>
         
         </div>
       </aside>
@@ -314,11 +300,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Ruby on Rails" title="Ruby on Rails">Ruby on Rails</a>
+                          <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
                         
-                          <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
-                        
-                          <a class="tag" href="/tags/#Travis IC" title="Travis IC">Travis IC</a>
+                          <a class="tag" href="/tags/#Vue.js 菜鳥學習日記" title="Vue.js 菜鳥學習日記">Vue.js 菜鳥學習日記</a>
                         
                     </div>
                 </section>
