@@ -14,7 +14,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [ Vue.js ] 基礎起手式 - Aimee Lo | Blog
+          [ Vue.js ] 環境建置 &amp; 起手式 - Aimee Lo | Blog
         
     </title>
 
@@ -93,7 +93,7 @@
                               <a class="tag" href="/tags/#Vue.js 菜鳥學習日記" title="Vue.js 菜鳥學習日記">Vue.js 菜鳥學習日記</a>
                             
                         </div>
-                        <h1>[ Vue.js ] 基礎起手式</h1>
+                        <h1>[ Vue.js ] 環境建置 &amp; 起手式</h1>
                         <h2 class="subheading">Vue.js 菜鳥學習日記</h2>
                         <span class="meta">
                             Posted by Aimee on
@@ -214,18 +214,18 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="建立基礎框架"><a href="#建立基礎框架" class="headerlink" title="建立基礎框架"></a>建立基礎框架</h3><p>進入 BootCDN 將 Vue 的 js 檔案下載到本定端。<br><a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">https://www.bootcdn.cn/</a><br><img src="https://i.imgur.com/lW4X7nC.png" alt=" "></p>
-<p>目前使用的版本為 Vue 2.6.10<br>將這份JS下載到本地端 <a href="https://cdn.bootcss.com/vue/2.6.10/vue.js" target="_blank" rel="noopener">https://cdn.bootcss.com/vue/2.6.10/vue.js</a> </p>
-<p>建立基礎框架，並將下載得檔案 require 近來。<br><img src="https://i.imgur.com/4lc977J.png" alt=" "></p>
-<blockquote>
-<p>注意！require Js 優先順序需要注意，否則會出現 Error。</p>
-</blockquote>
-<hr>
-<h3 id="基礎起手式"><a href="#基礎起手式" class="headerlink" title="基礎起手式"></a>基礎起手式</h3><p>javascript</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>html</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>這先開起 codepen 試試看<br>可以成功在畫面顯示 Hello 字樣<br><img src="https://i.imgur.com/pnwYZTB.png" alt=" "></p>
+                <h3 id="開發環境建置"><a href="#開發環境建置" class="headerlink" title="開發環境建置"></a>開發環境建置</h3><p>使用 CDN 下載後使用本機檔案<br><a href="https://www.bootcdn.cn/" target="_blank" rel="noopener">https://www.bootcdn.cn/</a><br><img src="https://i.imgur.com/lW4X7nC.png" alt=" "></p>
+<p>目前使用版本 Vue 2.6.10<br><a href="https://cdn.bootcss.com/vue/2.6.10/vue.js" target="_blank" rel="noopener">https://cdn.bootcss.com/vue/2.6.10/vue.js</a><br>將這份 js 下載到本地端，並且將這份 js require 到專案裡就完成了。</p>
+<h3 id="基礎起手式"><a href="#基礎起手式" class="headerlink" title="基礎起手式"></a>基礎起手式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// javascript</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">"#app"</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'Hello'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>el：element 元件綁定屬性。</li>
+<li>data：data 資料為 vue instance 可傳入選項物件。</li>
+<li>methods: vue instance 在初始化時可設定選項物件，設定方法並且執行動作。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>出現兩個花括號時，vue 會開始解析花括號內當成類似 js 的內容，但並不是所有 js 都可以解析。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;&#125;&#125; <span class="comment">&lt;!-- 兩個花括號，用來做資料顯示綁定 --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以上基礎起手式成功之後，就可以在畫面顯示 Hello 字樣囉！這裡用 codepen 示範：<br><img src="https://i.imgur.com/pnwYZTB.png" alt=" "></p>
 
                 
 
@@ -280,7 +280,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#建立基礎框架"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">建立基礎框架</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#基礎起手式"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">基礎起手式</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#開發環境建置"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">開發環境建置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#基礎起手式"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">基礎起手式</span></a></li></ol>
         
         </div>
       </aside>
