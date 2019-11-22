@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [11th鐵人賽] Day03 | RVM的Gemsets？ - Aimee Lo | Blog
+          [11th鐵人賽] Day 04 | Gem與Bundler - Aimee Lo | Blog
         
     </title>
 
-    <link rel="canonical" href="http://a-min.art/article/19ithelp/ironman03/">
+    <link rel="canonical" href="http://a-min.art/article/19ithelp/ironman04/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,11 +93,11 @@
                               <a class="tag" href="/tags/#11th鐵人賽" title="11th鐵人賽">11th鐵人賽</a>
                             
                         </div>
-                        <h1>[11th鐵人賽] Day03 | RVM的Gemsets？</h1>
+                        <h1>[11th鐵人賽] Day 04 | Gem與Bundler</h1>
                         <h2 class="subheading">IT邦幫忙 11th鐵人賽 自我挑戰組 完賽</h2>
                         <span class="meta">
                             Posted by Aimee on
-                            2019-09-19
+                            2019-09-20
                         </span>
                     </div>
                 
@@ -214,32 +214,34 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>在觀看關於 RVM 的文章時，其中有一部份會提到 Gemsets，<br>基於菜鳥好奇心，決定來寫篇關於 gemsets 文章。</p>
-<h3 id="Gemsets"><a href="#Gemsets" class="headerlink" title="Gemsets"></a>Gemsets</h3><p>Gemsets 是 RVM 的功能之一，它提供一個獨立的環境空間，所以不同版本的 Ruby 可以擁有多個 gemsets，而且gemsets 之間都是各自獨立互不相干的，也都可以分別安裝多個 gems。</p>
-<p>舉例說明，當你擁有多版本的 Ruby 時，假設目前使用的 Ruby2.6.3 版本，建立兩個 gemset 名稱分別為 r523 跟 r600，並且在 r523 的 gemset 安裝 Rails5.2.3 版本，可是當你切換到 gemset 的 r600 版本時，Rails5.2.3 的 gemset 就不存在了。所以我們可以透過 Gemsets 擁有分別建立兩套 gem 的獨立空間，而且方便在開發時切換使用。</p>
-<p>大概是長這樣。<br><img src="https://i.imgur.com/8psezTi.png" alt=" "></p>
-<p>用命令了解 gemset<br>用程式碼來跑一下流程，以 Ruby2.6.3 版本為例<br>首先用 <code>$ rvm gemset list</code> 來查看狀態。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset list</span><br><span class="line"></span><br><span class="line">gemsets for ruby-2.6.3 (found in /Users/min/.rvm/gems/ruby-2.6.3)</span><br><span class="line">=&gt; (default)</span><br><span class="line">   global</span><br></pre></td></tr></table></figure>
-<p>目前尚未建立任何 gemset。</p>
+                <p>身為菜味很重的女子，對文章也沒有特別規劃，目前狀態大概就是想到什麼就寫什麼了。昨日講到Gemsets，那今天就來看Gem與Bunder。</p>
+<hr>
+<h2 id="Gem"><a href="#Gem" class="headerlink" title="Gem"></a>Gem</h2><p>Ruby世界有很多的大神，提供了許多套件包及框架給大家使用，去滿足大家的需求或者解決某些特定問題，例如：Faker . Primary . Devise . Seed …，最有名的大概就是我們現在所使用Rails框架吧！而這些打包好的套件的就稱為Gem。<br>更多Gems請參考RubyGem官網 <a href="https://rubygems.org/" target="_blank" rel="noopener">https://rubygems.org/</a><br>RubyGem相關文件說明 <a href="https://guides.rubygems.org/" target="_blank" rel="noopener">https://guides.rubygems.org/</a></p>
+<p>安裝bundler套件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ gem install bundler</span><br><span class="line">Successfully installed bundler-2.0.2</span><br><span class="line">Parsing documentation for bundler-2.0.2</span><br><span class="line">Done installing documentation for bundler after 2 seconds</span><br><span class="line">1 gem installed</span><br></pre></td></tr></table></figure>
+
+<p>當我們利用RVM在安裝Ruby的時候就會內建Gem，Gem的預設位置會在.rvm/gems，那我們用Gem下載的套件，就會安裝在.rvm/gems/ruby-2.3.1 目前Ruby版本的位置。<br>可以用命令gem env來看，INSTALLATION DIRECTORY安裝目錄就是gem的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ gem env</span><br><span class="line"></span><br><span class="line">RubyGems Environment:</span><br><span class="line">  - RUBYGEMS VERSION: 3.0.6</span><br><span class="line">  - RUBY VERSION: 2.6.3 (2019-04-16 patchlevel 62) [x86_64-darwin18]</span><br><span class="line">  - INSTALLATION DIRECTORY: /Users/min/.rvm/gems/ruby-2.6.3</span><br><span class="line">  - USER INSTALLATION DIRECTORY: /Users/min/.gem/ruby/2.6.0</span><br><span class="line">  - RUBY EXECUTABLE: /Users/min/.rvm/rubies/ruby-2.6.3/bin/ruby</span><br><span class="line">  - GIT EXECUTABLE: /usr/local/bin/git</span><br><span class="line">  - EXECUTABLE DIRECTORY: /Users/min/.rvm/gems/ruby-2.6.3/bin</span><br><span class="line">  - SPEC CACHE DIRECTORY: /Users/min/.gem/specs</span><br><span class="line">  - SYSTEM CONFIGURATION DIRECTORY: /Users/min/.rvm/rubies/ruby-2.6.3/etc</span><br><span class="line">  - RUBYGEMS PLATFORMS:</span><br><span class="line"></span><br><span class="line">… ( 略 )</span><br></pre></td></tr></table></figure>
+
+<p>移除套件uninstall</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ gem uninstall yarn</span><br><span class="line">Remove executables:</span><br><span class="line">	yarn</span><br><span class="line"></span><br><span class="line">in addition to the gem? [Yn]  y</span><br><span class="line">Removing yarn</span><br><span class="line">Successfully uninstalled yarn-0.1.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他Gem命令"><a href="#其他Gem命令" class="headerlink" title="其他Gem命令"></a>其他Gem命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gem install rails -v 6.0.0    # 安裝指定版本</span><br><span class="line">$ gem uninstall rails -v 6.0.0  # 移除指定版本</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Bundler"><a href="#Bundler" class="headerlink" title="Bundler"></a>Bundler</h2><p>Bundler是ruby的套件，使用gem可以下載(上文有示範)。Bundler是用來解決管理Gems相依性問題。簡單來說，因為同一個套件會有很多個版本，所以在使用上就會有套件多版本管理上的問題，而Bundler則是解決這個問題的套件。Bundler預設是連線<a href="http://rubygems.org" target="_blank" rel="noopener">http://rubygems.org</a><br>當命令$bundle install時會連至伺服器，並且根據目錄中Gemfile的設定自動下載及安裝Gem套件</p>
+<p>命令bundle install（或是bundle）如果已安裝就會顯示Using</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ bundle</span><br><span class="line"> …</span><br><span class="line">Using simple_form 4.1.0</span><br><span class="line">Using spring 2.1.0</span><br><span class="line"> … ( 略 )</span><br></pre></td></tr></table></figure>
+<p>如果沒有，就會看到Fetching、Installing訊息出現</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ bundle</span><br><span class="line">The dependency tzinfo-data (&gt;= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.</span><br><span class="line">Fetching gem metadata from https://rubygems.org/............</span><br><span class="line">Fetching gem metadata from https://rubygems.org/.</span><br><span class="line">Resolving dependencies...</span><br><span class="line"> …</span><br><span class="line">Fetching sassc 2.2.1</span><br><span class="line">Installing sassc 2.2.1 with native extensions</span><br><span class="line"> … ( 略</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他Bundler命令"><a href="#其他Bundler命令" class="headerlink" title="其他Bundler命令"></a>其他Bundler命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ bundle show      # 顯示所有的gem套件</span><br><span class="line">$ bundle check     # 檢查前安裝的gem是否與Gemfile的gem版本相依</span><br><span class="line">$ bundle update    # 更新系統中的套件，並且同時更新Gemfile.lock文件</span><br><span class="line">$ bundle clean     # 清除目錄中未使用的gem</span><br></pre></td></tr></table></figure>
+<p>更多詳細內容請看Bundler <a href="https://bundler.io/v2.0/bundle_clean.html" target="_blank" rel="noopener">https://bundler.io/v2.0/bundle_clean.html</a></p>
+<hr>
+<p>參考連結<br><a href="https://ihower.tw/rails/environments-and-bundler.html" target="_blank" rel="noopener">Ruby on Rails 實戰聖經</a><br><a href="http://sayaku.github.io/blog/2016/05/05/rubyde-rvm-gem-bundler/" target="_blank" rel="noopener">Ruby的RVM,GEM,Bundler是什麼？</a></p>
 <blockquote>
-<p>default：不指定 gemset，Gem 都安装在默認環境下<br>global：安裝在 global 中的 Gem 會被其他 gemset 繼承</p>
+<p>作業系統 macOS Mojave10.14.6<br>Ruby 2.6.3<br>Rails 5.2.3*</p>
 </blockquote>
-<h3 id="開始建立gemset"><a href="#開始建立gemset" class="headerlink" title="開始建立gemset"></a>開始建立gemset</h3><p><code>$ rvm gemset create &lt;gemset_name&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset create r523</span><br><span class="line">ruby-2.6.3 - #gemset created /Users/min/.rvm/gems/ruby-2.6.3@r523</span><br><span class="line">ruby-2.6.3 - #generating r523 wrappers.......</span><br><span class="line"></span><br><span class="line">$ rvm gemset create r600</span><br><span class="line">ruby-2.6.3 - #gemset created /Users/min/.rvm/gems/ruby-2.6.3@r600</span><br><span class="line">ruby-2.6.3 - #generating r600 wrappers.......</span><br></pre></td></tr></table></figure>
-<p>此時就可以在 gemset list 看到我們剛建立好的 <code>r523</code> 以及 <code>r600</code> 的 gemset</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset list</span><br><span class="line"></span><br><span class="line">gemsets for ruby-2.6.3 (found in /Users/min/.rvm/gems/ruby-2.6.3)</span><br><span class="line">=&gt; (default) </span><br><span class="line">   global </span><br><span class="line">   r523</span><br><span class="line">   r600</span><br></pre></td></tr></table></figure>
-<h3 id="切換版本"><a href="#切換版本" class="headerlink" title="切換版本"></a>切換版本</h3><p>再來可以使用 <code>$ rvm use &lt;gemset&gt;</code> 切換<br>假設要切換 Ruby2.6.3 名稱 r600 的 gemset，命令寫成 <code>2.6.3@r600</code> 表示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ rvm use 2.6.3@r600</span><br><span class="line">Using /Users/min/.rvm/gems/ruby-2.6.3 with gemset r600</span><br><span class="line"></span><br><span class="line">$ rvm gemset list</span><br><span class="line">gemsets for ruby-2.6.3 (found in /Users/min/.rvm/gems/ruby-2.6.3)</span><br><span class="line">   (default)</span><br><span class="line">   global</span><br><span class="line">   r523   # 2.6.3@r523</span><br><span class="line">=&gt; r600   # 2.6.3@r600</span><br></pre></td></tr></table></figure>
-<p>再來，當我們安裝了 Rails6.0.0 版本在 2.6.3@r600，可以在 gem list 看到 Rails6.0.0 版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ gem list</span><br><span class="line"></span><br><span class="line">...(略過)...</span><br><span class="line"> </span><br><span class="line">rack (2.0.7)</span><br><span class="line">rack-test (1.1.0)</span><br><span class="line">rails (6.0.0)</span><br><span class="line">rails-dom-testing (2.0.3)</span><br><span class="line">rails-html-sanitizer (1.2.0)</span><br><span class="line">railties (6.0.0)</span><br></pre></td></tr></table></figure>
-<p>可是當我們切換到 2.6.3@r523，就看不到剛剛安裝得 Rails6.0.0</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ gem list</span><br><span class="line"></span><br><span class="line">...(略過)...</span><br><span class="line"> </span><br><span class="line">rake (12.3.2)</span><br><span class="line">rdoc (default: 6.1.0)</span><br><span class="line">rexml (default: 3.1.9)</span><br><span class="line">rss (default: 0.2.7)</span><br><span class="line">rubygems-bundler (1.4.5)</span><br><span class="line">rvm (1.11.3.9)</span><br></pre></td></tr></table></figure>
-<h3 id="清空及刪除"><a href="#清空及刪除" class="headerlink" title="清空及刪除"></a>清空及刪除</h3><p>當你套件安裝過多的時候，可以用以下命令重置清空 gemset 裡的 gems</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset empty 2.6.3@r600</span><br></pre></td></tr></table></figure>
-<p>或者刪除不需要的 gemset</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ rvm gemset delete r523</span><br><span class="line">Are you SURE you wish to remove the entire gemset directory &apos;r523&apos; (/Users/min/.rvm/gems/ruby-2.6.3@r523)?</span><br><span class="line">(anything other than &apos;yes&apos; will cancel) &gt; yes</span><br><span class="line">Removing gemset r523......</span><br></pre></td></tr></table></figure>
-<p>恭喜你，成功刪除！還不會影響到其他開發環境呢！</p>
-<h3 id="那什麼狀況會用到Gemsets？"><a href="#那什麼狀況會用到Gemsets？" class="headerlink" title="那什麼狀況會用到Gemsets？"></a>那什麼狀況會用到Gemsets？</h3><p>據說在以前沒有bundler的時候，大家都會建立gemsets來做環境切換，確實是方便許多。不過在後期，bundler的出現似乎搶走了gemsets的風采，每個gem都可以憑Bundler生成，利用Gemfile、Gemfile.lock管理版本號相依關係，那Gemset還有存在的必要嗎？身為菜鳥我也不是很清楚，但沒事就拿來玩玩當練功！不喜歡再刪掉就好啦 ddd</p>
 
                 
 
@@ -248,12 +250,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/19ithelp/ironman04/" data-toggle="tooltip" data-placement="top" title="[11th鐵人賽] Day 04 | Gem與Bundler">&larr; Previous Post</a>
+                            <a href="/article/build-blog/" data-toggle="tooltip" data-placement="top" title="Hexo 架設自己的 Blog">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/19ithelp/ironman02/" data-toggle="tooltip" data-placement="top" title="[11th鐵人賽] Day 02 | 環境安裝不可少的 RVM ">Next Post &rarr;</a>
+                            <a href="/article/19ithelp/ironman03/" data-toggle="tooltip" data-placement="top" title="[11th鐵人賽] Day03 | RVM的Gemsets？">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -294,7 +296,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Gemsets"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Gemsets</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#開始建立gemset"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">開始建立gemset</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#切換版本"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">切換版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#清空及刪除"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">清空及刪除</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#那什麼狀況會用到Gemsets？"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">那什麼狀況會用到Gemsets？</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Gem"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Gem</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#其他Gem命令"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">其他Gem命令</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Bundler"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Bundler</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#其他Bundler命令"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">其他Bundler命令</span></a></li></ol></li></ol>
         
         </div>
       </aside>
