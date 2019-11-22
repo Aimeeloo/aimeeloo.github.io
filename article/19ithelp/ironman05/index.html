@@ -215,22 +215,53 @@
                 post-container">
 
                 <h3 id="變數-Variable"><a href="#變數-Variable" class="headerlink" title="變數 Variable"></a>變數 Variable</h3><p>Ruby變數分成區域變數local Variable、全域變數global Variable、實例變數instance Variable、被類別變數class Variable四種</p>
-<p>種類 | 變數 | 預設值 | 說明<br>————- | ————-<br>區域變數（local Variable） | cat | 無 | 非大寫字母開頭<br>實例變數（instance Variable） | $cat | nil | $ 符號開頭<br>類別變數（class Variable） | @cat | nil | @ 符號開頭<br>全域變數（global Variable）| @@cat | 無 | @@ 符號開頭</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>變數</th>
+<th>預設值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>區域變數（local Variable）</td>
+<td>cat</td>
+<td>無</td>
+<td>非大寫字母開頭</td>
+</tr>
+<tr>
+<td>實例變數（instance Variable）</td>
+<td>$cat</td>
+<td>nil</td>
+<td>$ 符號開頭</td>
+</tr>
+<tr>
+<td>類別變數（class Variable）</td>
+<td>@cat</td>
+<td>nil</td>
+<td>@ 符號開頭</td>
+</tr>
+<tr>
+<td>全域變數（global Variable）</td>
+<td>@@cat</td>
+<td>無</td>
+<td>@@ 符號開頭</td>
+</tr>
+</tbody></table>
 <h3 id="變數得預設值"><a href="#變數得預設值" class="headerlink" title="變數得預設值"></a>變數得預設值</h3><p>進入irb來看，可以得知在還沒有初始化的全域變數以及實體變數預設值是 nil，則區域變數再沒有指定值的狀態下會跟你說找不到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; $cat		# =&gt; nil</span><br><span class="line">&gt; @cat		# =&gt; nil</span><br><span class="line">&gt; cat		# =&gt; Error : undefined local variable or method `cat&apos; for main:Object</span><br><span class="line">&gt; @@cat		# =&gt; Error : uninitialized class variable @@cat in Object</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$cat		# =&gt; nil</span><br><span class="line">@cat		# =&gt; nil</span><br><span class="line">cat		# =&gt; Error : undefined local variable or method `cat&apos; for main:Object</span><br><span class="line">@@cat		# =&gt; Error : uninitialized class variable @@cat in Object</span><br></pre></td></tr></table></figure>
 
 <h3 id="區域變數-local-Variable"><a href="#區域變數-local-Variable" class="headerlink" title="區域變數(local Variable)"></a>區域變數(local Variable)</h3><p>區域性變數以非大寫字母為開頭開頭。有效範圍從class、module、def或do end {}，但如果超過指定的範圍，就會找不到了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def method</span><br><span class="line">  local = &quot;abc&quot;</span><br><span class="line">  puts local  # abc 區域變數，在方法內可取得值</span><br><span class="line">  </span><br><span class="line">  @instance = &quot;xyz&quot;</span><br><span class="line">end</span><br><span class="line">method</span><br><span class="line">puts local  # 定義方法外會出現error：undefined local variable or method</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">method</span></span></span><br><span class="line">  local = <span class="string">"abc"</span></span><br><span class="line">  puts local  <span class="comment"># abc 區域變數，在方法內可取得值</span></span><br><span class="line">  </span><br><span class="line">  @instance = <span class="string">"xyz"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">method</span><br><span class="line">puts local  <span class="comment"># 定義方法外會出現error：undefined local variable or method</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="實例變數-instance-Variable"><a href="#實例變數-instance-Variable" class="headerlink" title="實例變數(instance Variable)"></a>實例變數(instance Variable)</h3><p>實例變數以@符號開頭，在類別中，可以讓所以的方法共用得變數，且變數的值會根據各個方法而儲存不同的值，實體變數在class互相取值前記得要先將物件實體化之後才能互相使用。</p>
 <h3 id="類別變數-class-Variable"><a href="#類別變數-class-Variable" class="headerlink" title="類別變數(class Variable)"></a>類別變數(class Variable)</h3><p>類別變數@@符號開頭，類別變數與實例變數得差異就在繼承，由於類別變數除了在自己的class，因為繼承也可以直接在其他得class使用，為了避免日後專案出錯，通常是建議最好不要去使用它。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Animal</span><br><span class="line">  @@cat = :a</span><br><span class="line">  @dog = :b</span><br><span class="line"></span><br><span class="line">  def self.cat</span><br><span class="line">    @@cat</span><br><span class="line">  end</span><br><span class="line"></span><br><span class="line">  def self.dog</span><br><span class="line">    @dog</span><br><span class="line">  end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">class Zoo &lt; Animal</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">p Animal.dog # :b</span><br><span class="line">p Zoo.dog # nil</span><br><span class="line">p Animal.cat # :a </span><br><span class="line">p Zoo.cat # :a</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span></span><br><span class="line">  @@cat = <span class="symbol">:a</span></span><br><span class="line">  @dog = <span class="symbol">:b</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">cat</span></span></span><br><span class="line">    @@cat</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">dog</span></span></span><br><span class="line">    @dog</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Zoo</span> &lt; Animal</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">p Animal.dog <span class="comment"># :b</span></span><br><span class="line">p Zoo.dog <span class="comment"># nil</span></span><br><span class="line">p Animal.cat <span class="comment"># :a </span></span><br><span class="line">p Zoo.cat <span class="comment"># :a</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="全域變數-global-Variable"><a href="#全域變數-global-Variable" class="headerlink" title="全域變數(global Variable)"></a>全域變數(global Variable)</h3><p>全域變數$開頭，在尚未初始化前全域變數的預設值為nil。顧名思義全域變數能夠編寫於任何地方，在使用上相對危險。</p>
 <h3 id="虛擬變數-pseudo-variable"><a href="#虛擬變數-pseudo-variable" class="headerlink" title="虛擬變數(pseudo variable)"></a>虛擬變數(pseudo variable)</h3><p>除了以上四種變數外，還有Ruby本身自己定義的變數，稱為虛擬變數，例如 nil, self, true, false，這些虛擬變數都有特別用途或意義，所以內容是不能被更改的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; true = 0	# =&gt; Error : Can&apos;t assign to true</span><br><span class="line">&gt; self = 0  # =&gt; Error : Can&apos;t change the value of self</span><br></pre></td></tr></table></figure>
-
-
 <hr>
 <h3 id="常數-Constant"><a href="#常數-Constant" class="headerlink" title="常數 Constant"></a>常數 Constant</h3><p>使用方式跟變數差不多，但Ruby對常數有特別的命名規定就是大寫英文字母開頭，就像所有的類別、模組的名字都必須是常數大寫字母開頭。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Cat = 123</span><br><span class="line">Dog = &quot;Meeks&quot;</span><br><span class="line">MyName = &quot;Aimee&quot;    #=&gt; Aimee</span><br><span class="line">MyName &lt;&lt; &quot;Lo&quot;      #=&gt; AimeeLo</span><br></pre></td></tr></table></figure>
@@ -238,8 +269,7 @@
 <p>而且在Ruby程式語言裡，常數的內容是可以修改，即便有跳出警告訊息，但還是可以正常使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; MyName = &quot;Amy&quot;</span><br><span class="line"> =&gt; &quot;Amy&quot;</span><br><span class="line">&gt; MyName = &quot;Aimee&quot;</span><br><span class="line">     warning: already initialized constant MyName</span><br><span class="line">     warning: previous definition of MyName was here # 出現警告</span><br><span class="line"> =&gt; &quot;Aimee&quot;</span><br><span class="line">&gt; MyName</span><br><span class="line"> =&gt; &quot;Aimee&quot; # 依然可以更改</span><br></pre></td></tr></table></figure>
 
-
-<p>參考連結：<br><a href="https://railsbook.tw/chapters/05-ruby-basic-1.html" target="_blank" rel="noopener">變數、常數、流程控制、迴圈</a><br><a href="https://blog.hane.pro/class-instance-variable/" target="_blank" rel="noopener">「Ruby筆記06」實例變數・類別變數・類別實例變數的差異與用法</a><br><a href="https://pjchender.github.io/2017/09/26/ruby-%E8%AE%8A%E6%95%B8%EF%BC%88variable%EF%BC%89%E8%88%87%E5%B8%B8%E6%95%B8%EF%BC%88constant%EF%BC%89/" target="_blank" rel="noopener">[Ruby] 變數（variable）與常數（Constant）</a></p>
+<p>參考連結：<br><a href="https://railsbook.tw/chapters/05-ruby-basic-1.html" target="_blank" rel="noopener">變數、常數、流程控制、迴圈</a><br><a href="https://blog.hane.pro/class-instance-variable/" target="_blank" rel="noopener">實例變數・類別變數・類別實例變數的差異與用法</a><br><a href="https://pjchender.github.io/2017/09/26/ruby-%E8%AE%8A%E6%95%B8%EF%BC%88variable%EF%BC%89%E8%88%87%E5%B8%B8%E6%95%B8%EF%BC%88constant%EF%BC%89/" target="_blank" rel="noopener">變數（variable）與常數（Constant）</a></p>
 
                 
 
