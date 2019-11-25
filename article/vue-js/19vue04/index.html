@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Rails 6 如何引用 Brootsrap - Aimee Lo | Blog
+          [ Vue.js ] 屬性綁定 v-bind、class 與 style - Aimee Lo | Blog
         
     </title>
 
-    <link rel="canonical" href="http://a-min.art/article/rails6-bootstrap-install/">
+    <link rel="canonical" href="http://a-min.art/article/vue-js/19vue04/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,18 +88,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Ruby on Rails" title="Ruby on Rails">Ruby on Rails</a>
+                              <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
                             
-                              <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
-                            
-                              <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
+                              <a class="tag" href="/tags/#Vue.js 菜鳥學習日記" title="Vue.js 菜鳥學習日記">Vue.js 菜鳥學習日記</a>
                             
                         </div>
-                        <h1>Rails 6 如何引用 Brootsrap</h1>
-                        <h2 class="subheading">升級到 rails 6 最大的差別大概就在前端 webpacker</h2>
+                        <h1>[ Vue.js ] 屬性綁定 v-bind、class 與 style</h1>
+                        <h2 class="subheading">Vue.js 菜鳥學習日記</h2>
                         <span class="meta">
                             Posted by Aimee on
-                            2019-11-07
+                            2019-11-03
                         </span>
                     </div>
                 
@@ -216,23 +214,39 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>從 rails 5.2.3 突然升級到 rails 6，最大的差別大概就在前端 webpacker<br>webpacker 將 Bootstrap 打包在內，因此當我們想使用 Bootstrap 就必須用以下步驟來引用它。</p>
-<p>在開始之前，先建立一個專案，並且進入到專案目錄下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rails new project_name</span><br><span class="line">$ cd project_name</span><br></pre></td></tr></table></figure>
+                <p>菜鳥新手初學 Vue.js<br>在沒有導師得指導下，網路影片以及書籍是最好的學系來源了！<br>本次學習日記是參考表嚴肅 Vue.js 精講 01-20 集<br>影片連結也提供給大家，有興趣的人歡迎一起練習。</p>
+<blockquote>
+<p>表嚴肅<br>Vue.js 精講 01-20 集<br><a href="https://www.bilibili.com/video/av13450835/?p=1" target="_blank" rel="noopener">https://www.bilibili.com/video/av13450835/?p=1</a></p>
+</blockquote>
+<hr>
+<p><code>v-bind</code> 屬性綁定，用來綁定數據與元素的屬性。<br>我們最常在HTML裡最長使用 <code>&lt;a&gt;</code> 標籤超連結，直接把連結位置寫死。<br>像是這樣：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://a-min.art/"</span>&gt;</span>點我<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="引用-Bootstrap"><a href="#引用-Bootstrap" class="headerlink" title="引用 Bootstrap"></a>引用 Bootstrap</h3><p>1.用 Yarn 安裝 Bootstrap 及相關套件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add bootstrap jquery popper.js</span><br></pre></td></tr></table></figure>
-
-<p>2.設定Webpacker<br>開啟 config/webpack/environment.js, 加入下方程式碼：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; environment &#125; = <span class="built_in">require</span>(<span class="string">'@rails/webpacker'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line">environment.plugins.append(</span><br><span class="line"><span class="string">'Provide'</span>,</span><br><span class="line"><span class="keyword">new</span> webpack.ProvidePlugin(&#123;</span><br><span class="line">$: <span class="string">'jquery'</span>,</span><br><span class="line">jQuery: <span class="string">'jquery'</span>,</span><br><span class="line">Popper: [<span class="string">'popper.js'</span>, <span class="string">'default'</span>],</span><br><span class="line">&#125;)</span><br><span class="line">);</span><br><span class="line"><span class="built_in">module</span>.exports = environment;</span><br></pre></td></tr></table></figure>
-
-<p>3.開啟檔案：app/javascript/packs/application.js, 加入下方程式碼：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'bootstrap'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>4.打開 app/assets/stylesheets/application.css, 加入下方程式碼：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">'bootstrap/scss/bootstrap'</span></span><br></pre></td></tr></table></figure>
-
-<p>以上，恭喜完成安裝，可以正常使用 bootstrap 囉！</p>
+<hr>
+<p>如果我們希望者是一個動態地址呢？<br>這時我們就可以使用 Vue.js 的 <code>v-bind</code> 來綁定HTML屬性<br>寫法就會像以下這樣。</p>
+<h3 id="文字連結"><a href="#文字連結" class="headerlink" title="文字連結"></a>文字連結</h3><p>將文字超連結位置倒向 <code>https://a-min.art/</code> 頁面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js 檔案</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    url: <span class="string">'https://a-min.art/'</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html 檔案 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">“url”</span>&gt;</span>點我<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>開啟 Console 輸入 <code>app.url = &quot;網址位置&quot;</code> 可以更改網址位置。<br>此時重新整點選<code>點我</code>，網址位置就會倒向 <code>https://www.google.com.tw/</code> 頁面<br><img src="https://i.imgur.com/YXIl2W6.png" alt="Imgur"></p>
+<hr>
+<h3 id="圖片連結"><a href="#圖片連結" class="headerlink" title="圖片連結"></a>圖片連結</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js 檔案</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    url: <span class="string">'https://a-min.art/'</span>,</span><br><span class="line">    image: <span class="string">'https://www.dw.com/image/42582511_401.jpg'</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html 檔案 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">img</span> <span class="attr">v-bind:src</span>=<span class="string">"image"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>此時開啟網頁就會看到圖片，點下去就可以連結到指定的網站。</p>
+<hr>
+<h3 id="class-綁定"><a href="#class-綁定" class="headerlink" title="class 綁定"></a>class 綁定</h3><p>在 data 裡新增綁定的 class <code>klass: &#39;btn btn-default&#39;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js 檔案</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    url: <span class="string">'https://a-min.art/'</span>,</span><br><span class="line">    image: <span class="string">'https://www.dw.com/image/42582511_401.jpg'</span>,</span><br><span class="line">    klass: <span class="string">'btn btn-default'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在要綁定的標籤加上 <code>v-bind:class=&quot;klass”</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html 檔案 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:class</span>=<span class="string">"klass"</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span></span><br><span class="line">	點我</span><br><span class="line">     <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>接著從開發者工具來看，會發現在 <code>&lt;a&gt;</code> 標籤上複雜的 <code>v-bind:class</code> 變成很單純的 <code>class</code><br><img src="https://i.imgur.com/Ebumcx2.png" alt="Imgur"></p>
+<hr>
+<h3 id="加入-style-CSS"><a href="#加入-style-CSS" class="headerlink" title="加入 style CSS"></a>加入 style CSS</h3><p>在 main.js 加上 <code>isActive: true</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js 檔案</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    url: <span class="string">'https://a-min.art/'</span>,</span><br><span class="line">    image: <span class="string">'https://www.dw.com/image/42582511_401.jpg'</span>,</span><br><span class="line">    klass: <span class="string">'btn btn-default'</span>,</span><br><span class="line">    isActive: <span class="literal">true</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Index.html 把 <code>&lt;a&gt;</code> 標籤 class 的改成 <code>v-bind:class=&quot;{active: isActive}”</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- index.html 檔案 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:class</span>=<span class="string">"&#123;active: isActive&#125;"</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span></span><br><span class="line">        點我</span><br><span class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>開啟網頁，並且開啟 Console 查看， isActive 為 <code>true</code> 時，會顯示樣式設定的 css。<br><img src="https://i.imgur.com/MRmKWbC.png" alt="Imgur"></p>
+<p>當 isActive 為 <code>false</code> 時，css 樣式就會消失。<br><img src="https://i.imgur.com/ayIv0I3.png" alt="Imgur"></p>
+<hr>
+<p>參考連結：<br><a href="https://www.bilibili.com/video/av13450835?p=5" target="_blank" rel="noopener">表严肃讲Vue</a></p>
 
                 
 
@@ -241,12 +255,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/RoR-enum/" data-toggle="tooltip" data-placement="top" title="Rails 狀態設定 Enum">&larr; Previous Post</a>
+                            <a href="/article/vue-js/19vue02/" data-toggle="tooltip" data-placement="top" title="[ Vue.js ] 列表渲染v-for">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/vue-js/19vue02/" data-toggle="tooltip" data-placement="top" title="[ Vue.js ] 列表渲染v-for">Next Post &rarr;</a>
+                            <a href="/article/vue-js/19vue01/" data-toggle="tooltip" data-placement="top" title="[ Vue.js ] 基礎架構 & 雙向綁定v-model">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -287,7 +301,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#引用-Bootstrap"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">引用 Bootstrap</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#文字連結"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">文字連結</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#圖片連結"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">圖片連結</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#class-綁定"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">class 綁定</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#加入-style-CSS"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">加入 style CSS</span></a></li></ol>
         
         </div>
       </aside>
@@ -307,11 +321,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Ruby on Rails" title="Ruby on Rails">Ruby on Rails</a>
+                          <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
                         
-                          <a class="tag" href="/tags/#rails6" title="rails6">rails6</a>
-                        
-                          <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
+                          <a class="tag" href="/tags/#Vue.js 菜鳥學習日記" title="Vue.js 菜鳥學習日記">Vue.js 菜鳥學習日記</a>
                         
                     </div>
                 </section>
